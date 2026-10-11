@@ -57,7 +57,7 @@ Endpoint onboarding enables security teams to collect endpoint telemetry and inv
 
 Attack Surface Reduction rules help prevent common attack techniques by restricting potentially risky application behaviours. This control is intended to reduce the opportunity for malicious scripts to launch downloaded executable files.
 
-**Evidence:** ![screenshot](./screenshots/asr-policy.png)
+**Evidence:** ![screenshot](./screenshots/endpoint-security-policy/New%20Endpoint%20Security%20Policy%20Settings.png)
 
 ### Phase 3: Microsoft Defender XDR Incident Investigation
 
