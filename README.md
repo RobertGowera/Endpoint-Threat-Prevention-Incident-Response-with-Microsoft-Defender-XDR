@@ -43,7 +43,8 @@ The objectives of this project were to:
 
 Endpoint onboarding enables security teams to collect endpoint telemetry and investigate device activity through the Defender security platform.
 
-**Evidence:** `screenshots/endpoint-onboarding.png`
+**Evidence:** ![screenshot](./screenshots/endpoint-onboarding/ Successfully onboarded endpoint.png)
+
 
 ### Phase 2: Attack Surface Reduction Policy
 
@@ -57,7 +58,7 @@ Endpoint onboarding enables security teams to collect endpoint telemetry and inv
 
 Attack Surface Reduction rules help prevent common attack techniques by restricting potentially risky application behaviours. This control is intended to reduce the opportunity for malicious scripts to launch downloaded executable files.
 
-**Evidence:** `screenshots/asr-policy.png`
+**Evidence:** ![screenshot](./screenshots/asr-policy.png)
 
 ### Phase 3: Microsoft Defender XDR Incident Investigation
 
