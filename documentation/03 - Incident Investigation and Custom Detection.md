@@ -45,12 +45,6 @@ Generate activity for investigation in Microsoft Defender XDR using the attack s
 
 ![Attack Script Execution](/screenshots/defender-xdr-incident/Attack%20Script%20ran.png)
 
-### Security Significance
-
-Controlled simulations provide analysts with an opportunity to practise incident investigation using observable endpoint behaviour.
-
-Running a simulation script does not, by itself, establish that every intended action succeeded. The resulting telemetry must be examined to determine which behaviours were actually observed.
-
 ## 5. Incident Identification and Review
 
 ### Objective
@@ -66,9 +60,9 @@ Review the incident generated during the exercise and identify the activity requ
 
 ### Evidence
 
-![Process Injection Alert](../screenshots/incident-investigation/Process%20Injection%20Alert.png)
+![Multi-Stage Incident](/screenshots/defender-xdr-incident/Multi-Stage%20Incident.png)
+![Process Injection Alert](/screenshots/defender-xdr-incident/Process%20Injection%20Alert.png)
 
-![Multi-Stage Incident](../screenshots/incident-investigation/Multi-Stage%20Incident.png)
 
 ### Findings
 
@@ -91,9 +85,9 @@ Investigate the sequence of endpoint activity and understand the relationship be
 
 ### Evidence
 
-![Client 2 Device Timeline](../screenshots/incident-investigation/Client%202%20Device%20Timeline.png)
+![Client 2 Device Timeline](/screenshots/defender-xdr-incident/Client%202%20Device%20Timeline.png)
 
-![Client 2 Process Tree](../screenshots/incident-investigation/Client%202%20Process%20Tree.png)
+![Client 2 Process Tree](/screenshots/defender-xdr-incident/Client%202%20Process%20Tree.png)
 
 ### Findings and Security Significance
 
@@ -103,7 +97,7 @@ The process tree and device timeline provided complementary views of endpoint ac
 - **Device timeline:** Helped place events in sequence and correlate activity during the investigation.
 - **Incident details:** Provided additional context for prioritising relevant events.
 
-PowerShell launching Notepad is a behaviour worth examining when it occurs in an unexpected context, but it is not conclusive evidence of malicious activity. Analysts should also inspect command-line arguments, process behaviour, relevant memory or injection telemetry, file activity and subsequent network connections where available.
+PowerShell launching Notepad is a behaviour worth examining when it occurs in an unexpected context, but it is not conclusive evidence of malicious activity..
 
 The purpose of correlating these sources is to establish a defensible conclusion based on multiple pieces of evidence rather than a single alert or process name.
 
@@ -123,15 +117,15 @@ Investigate the destination IP address contacted by Notepad and assess whether t
 
 ### Evidence
 
-![Suspicious IP Address Contacted](../screenshots/incident-investigation/Suspicious%20IP%20Address%20contacted.png)
+![Suspicious IP Address Contacted](/screenshots/defender-xdr-incident/Suspicious%20IP%20Address%20contacted.png)
 
 ### Findings
 
-The investigation identified an HTTP connection associated with `notepad.exe`. The VirusTotal lookup suggested that the destination IP address was associated with Microsoft.
+The investigation identified an HTTP connection associated with `notepad.exe`. The VirusTotal lookup suggested that the destination IP address was associated with Microsoft and no malicious detections however it had a community score of -261.
 
 This created an important distinction between suspicious-looking process behaviour and the reputation of the network destination.
 
-A process making an unexpected HTTP connection can justify further investigation, particularly when the process is involved in a security incident. However, the connection alone does not prove that the destination is malicious or that data was exfiltrated.
+A process making an unexpected HTTP connection can justify further investigation, particularly when the process is involved in a security incident. However, the connection alone does not prove that the destination is malicious or that data was exfiltrated. After checking it
 
 IP ownership and reputation should be verified using reliable sources and considered alongside the hostname, URL, timing, process command line, DNS information, TLS or HTTP details where available, and the surrounding incident evidence.
 
