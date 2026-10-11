@@ -118,6 +118,7 @@ Investigate the destination IP address contacted by Notepad and assess whether t
 ### Evidence
 
 ![Suspicious IP Address Contacted](/screenshots/defender-xdr-incident/Suspicious%20IP%20Address%20contacted.png)
+![VirusTotal Screenshot](/screenshots/defender-xdr-incident/Virus-Total-Scan.png)
 
 ### Findings
 
@@ -125,11 +126,11 @@ The investigation identified an HTTP connection associated with `notepad.exe`. T
 
 This created an important distinction between suspicious-looking process behaviour and the reputation of the network destination.
 
-A process making an unexpected HTTP connection can justify further investigation, particularly when the process is involved in a security incident. However, the connection alone does not prove that the destination is malicious or that data was exfiltrated. After checking it
+A process making an unexpected HTTP connection can justify further investigation, particularly when the process is involved in a security incident. However, the connection alone does not prove that the destination is malicious or that data was exfiltrated.
 
-IP ownership and reputation should be verified using reliable sources and considered alongside the hostname, URL, timing, process command line, DNS information, TLS or HTTP details where available, and the surrounding incident evidence.
+IP ownership and reputation should be verified using reliable sources and considered alongside the hostname, URL, timing, process command line, DNS information, TLS or HTTP details where available and the surrounding incident evidence.
 
-**Investigation conclusion:** The connection warranted contextual investigation because of the process and incident involved. The available evidence described here is not sufficient, by itself, to conclude that the Microsoft-associated destination was malicious.
+**Investigation conclusion:** The connection warranted  investigation because of the process and incident involved. The available evidence described here is not sufficient, by itself, to conclude that the Microsoft-associated destination was malicious.
 
 ## 8. Advanced Hunting with KQL
 
@@ -147,7 +148,7 @@ DeviceProcessEvents
 
 ### Query Explanation
 
-- `DeviceProcessEvents` accesses process-creation telemetry available in Microsoft Defender XDR.
+- `DeviceProcessEvents` accesses process creation telemetry available in Microsoft Defender XDR.
 - `where` filters the results to records matching the specified conditions.
 - `InitiatingProcessFileName =~ "powershell.exe"` filters for events where the initiating process is PowerShell, using a case-insensitive equality comparison.
 - `FileName =~ "notepad.exe"` filters for events where the created process is Notepad.
@@ -157,49 +158,67 @@ The query identifies process-creation events in which PowerShell initiated Notep
 
 ### Evidence
 
-![Advanced Hunting KQL Detection Query](../screenshots/incident-investigation/Advanced%20Hunting%20KQL%20Detection%20Query.png)
+![Advanced Hunting KQL Detection Query](/screenshots/defender-xdr-incident/Advanced%20Hunting%20KQL%20Detection%20Query.png)
 
 ### Validation and Findings
 
-The query was executed against the available telemetry, and the resulting match evidence showed activity associated with the incident being investigated.
+The query was executed against the available telemetry and the resulting match evidence showed activity associated with the incident being investigated.
 
 This demonstrated how an observed process relationship can be translated into a repeatable query for identifying similar activity in endpoint telemetry.
 
-The query is intentionally narrow. It can miss other process names, alternate execution methods or different telemetry patterns. It also does not prove that process injection or process hollowing occurred. Its results should be correlated with other evidence before an analyst reaches a conclusion.
+The query is intentionally narrow. It can miss other process names, alternate execution methods or different telemetry patterns.
 
-## 9. Custom Detection Rule Creation and Validation
+
+## 9. Custom Detection Rule and Automated Response
 
 ### Objective
 
-Convert the Advanced Hunting query into a custom detection rule and verify that it matched activity associated with the investigated incident.
+Create a custom detection rule in Microsoft Defender XDR to identify the process activity observed during the investigation and configure automated response actions to support incident containment and evidence collection.
+
+### Detection Query
+
+```kusto
+DeviceProcessEvents
+| where InitiatingProcessFileName =~ "powershell.exe"
+    and FileName =~ "notepad.exe"
+```
+
+### Detection Rule Configuration
+
+The custom detection rule was configured with the following response actions:
+
+- **Collect investigation package:** Collect an investigation package from the affected device to support further analysis and evidence gathering.
+- **Isolate device:** Isolate the affected endpoint to help contain potential malicious activity and limit its communication with other systems, subject to the platform's isolation behaviour and permitted connections.
 
 ### Procedure
 
-1. Created a custom detection rule in Microsoft Defender XDR using the KQL query.
+1. Created a custom detection rule using the Advanced Hunting KQL query.
 2. Reviewed the rule configuration and summary.
-3. Examined the available match evidence.
-4. Confirmed that the rule's match evidence corresponded to the incident activity investigated during the lab.
+3. Examined the query match evidence and confirmed that it corresponded to activity associated with the incident investigated during the lab.
+4. Configured the rule to collect an investigation package and isolate the affected device when the detection triggers.
 
 ### Evidence
 
-![New Custom Detection Rule](../screenshots/incident-investigation/New%20Custom%20Detection%20Rule.png)
+![Advanced Hunting KQL Detection Query](/screenshots/defender-xdr-incident/Advanced%20Hunting%20KQL%20Detection%20Query.png)
 
-![Detection Rule Summary](../screenshots/incident-investigation/Detection%20Rule%20Summary.png)
+![New Custom Detection Rule](/screenshots/defender-xdr-incident/New%20Custom%20Detection%20Rule.png)
 
-### Findings and Security Significance
+![Detection Rule Summary](/screenshots/defender-xdr-incident/Detection%20Rule%20Summary.png)
 
-The custom detection rule matched activity associated with the incident under investigation. This provided evidence that the query could identify the relevant process-execution pattern in the lab telemetry.
+### Security Significance
 
-The exercise demonstrated the workflow of moving from incident investigation to detection engineering:
+This configuration demonstrates how detection engineering can be connected to incident response. Rather than relying only on an analyst to begin containment and evidence collection manually, a detection rule can be configured to initiate supported response actions when its conditions are met.
 
-1. Observe behaviour during an investigation.
-2. Identify a useful pattern in the available telemetry.
-3. Express the pattern as a KQL query.
-4. Create a custom detection rule.
-5. Review the resulting match evidence.
+Device isolation can help contain a potentially compromised endpoint, while an investigation package can provide additional artefacts for analysis. These actions serve different purposes: isolation focuses on containment, whereas evidence collection supports investigation.
 
-The detection should not be treated as a definitive indicator of malicious activity in every environment. PowerShell launching Notepad may occur for legitimate reasons, so production use would require further tuning, contextual checks and testing to balance detection coverage against false positives.
 
+### Validation and Limitations
+
+The available match evidence showed that the query matched activity associated with the investigated lab incident. The rule was also configured to collect an investigation package and isolate the device.
+
+A query match, however, does not simply prove that both response actions executed successfully. Successful execution should be confirmed through the relevant device action status, action history or other available Defender XDR evidence.
+
+The detection query identifies a specific process relationship; it does not, by itself, prove process injection or process hollowing. The response actions are therefore documented as configured capabilities rather than confirmed outcomes unless execution evidence is available.
 ## 10. IP Indicator Configuration
 
 ### Objective
@@ -213,27 +232,22 @@ The indicator was configured with the following settings:
 - **Indicator type:** IP address
 - **Action:** Block
 - **MITRE ATT&CK category:** Execution
-- **IP address:** Redacted in the documentation
-
-The exact IP address has been omitted from this public project to avoid unnecessarily exposing lab-specific network details.
 
 ### Evidence
 
-![Creating an IP Indicator](../screenshots/incident-investigation/Creating%20an%20IP%20Indicator.png)
+![Creating an IP Indicator](/screenshots/defender-xdr-incident/Creating%20an%20IP%20Indicator.png)
 
-![IP Indicator Settings](../screenshots/incident-investigation/IP%20Indicator%20Settings.png)
+![IP Indicator Settings](/screenshots/defender-xdr-incident/IP%20Indicator%20Settings.png)
 
 ### Security Significance
 
-Indicators can help security teams apply controls to known or suspected malicious infrastructure. However, the action assigned to an indicator should be supported by sufficient evidence and an understanding of its potential operational impact.
-
-The VirusTotal lookup in this investigation suggested that the destination IP address was associated with Microsoft. That finding should be verified before treating the address as malicious or using it as a block indicator in a production environment.
+Indicators can help security teams apply controls to known or suspected malicious infrastructure.
 
 Blocking a legitimate service address may disrupt normal business activity. An analyst should verify the destination, determine whether the observed connection is genuinely related to malicious behaviour, check the scope of the control and assess possible service impact before implementing a production block.
 
-The configured indicator demonstrates the configuration workflow. The configuration screenshot alone does not establish that traffic was successfully blocked or that the destination was malicious.
+The configured indicator demonstrates the configuration workflow.
 
-**MITRE ATT&CK note:** The configured category was Execution. This should be documented as the lab configuration, not as proof that the observed behaviour maps conclusively to that tactic. A formal ATT&CK mapping should be based on the behaviour and technique supported by the evidence.
+**MITRE ATT&CK note:** The configured category was Execution.
 
 ## 11. Key Findings
 
@@ -248,13 +262,11 @@ The investigation demonstrated several practical security operations skills:
 - Configured an IP indicator with a blocking action.
 - Considered the limitations of individual indicators and the potential impact of blocking legitimate infrastructure.
 
-The exercise reinforced the importance of correlating evidence across multiple sources before deciding whether activity is malicious and what response is appropriate.
-
 ## 12. Lessons Learned
 
 ### Investigation requires correlation
 
-An alert or unusual process relationship is a starting point, not a complete verdict. Analysts should correlate the process tree, timeline, command-line information, network activity and other available telemetry.
+An alert or unusual process relationship is a starting point, not a complete verdict. Analysts should correlate the process tree, timeline, commandline information, network activity and other available telemetry.
 
 ### Detection engineering begins with observable behaviour
 
@@ -264,10 +276,6 @@ A useful detection query can be developed from a pattern identified during an in
 
 An IP address's reputation or apparent ownership should inform the investigation, but neither reputation nor ownership alone establishes whether a particular connection is benign or malicious.
 
-### Configuration is not proof of enforcement
-
-Creating a detection rule or configuring a blocking indicator does not, by itself, prove that an alert was generated or traffic was blocked. Those outcomes require appropriate validation evidence.
-
 ### Response actions should be evidence-based
 
 Blocking indicators can affect legitimate services. Analysts should verify the evidence and consider operational impact before applying disruptive controls.
@@ -276,14 +284,13 @@ Blocking indicators can affect legitimate services. Analysts should verify the e
 
 This was a controlled learning exercise using a Microsoft-provided attack simulation and lab telemetry. The findings are limited to the activity and evidence available during the exercise.
 
-The process-execution query identifies a specific parent-child process pattern; it does not independently prove process injection or process hollowing. The IP reputation lookup suggested a Microsoft association, which requires contextual verification rather than an automatic malicious classification.
+The process execution query identifies a specific parent-child process pattern. The IP reputation lookup suggested a Microsoft association, which requires contextual verification rather than an automatic malicious classification.
 
-The indicator configuration demonstrates how a block action can be configured, but configuration alone does not prove successful enforcement. Similarly, the custom detection rule's match evidence validates a match against the observed lab activity, not its effectiveness against every variation of the behaviour.
+The indicator configuration demonstrates how a block action can be configured. The custom detection rule's match evidence validates a match against the observed lab activity.
 
 ## 14. Conclusion
 
 This phase demonstrated an end-to-end investigation workflow in Microsoft Defender XDR, from reviewing an incident and analysing endpoint telemetry to developing a KQL query, validating a custom detection rule and configuring an IP indicator.
 
-The main lesson was the importance of evidence-based analysis. Effective SOC investigation involves identifying relevant patterns, validating them against telemetry, understanding the limits of detection logic and applying response controls only when justified by the available evidence.
+The main lesson was the importance of evidence based analysis. Effective SOC investigation involves identifying relevant patterns, validating them against telemetry, understanding the limits of detection logic and applying response controls only when justified by the available evidence.
 
-The exercise strengthened practical skills in endpoint investigation, KQL-based detection, incident analysis and security-control configuration.
