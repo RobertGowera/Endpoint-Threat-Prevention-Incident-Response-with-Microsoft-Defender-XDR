@@ -43,7 +43,7 @@ The objectives of this project were to:
 
 Endpoint onboarding enables security teams to collect endpoint telemetry and investigate device activity through the Defender security platform.
 
-**Evidence:** ![screenshot](./screenshots/endpoint-onboarding/ Successfully onboarded endpoint.png)
+**Evidence:** ![screenshot](.screenshots/endpoint-onboarding/Successfully Onboarded Endpoint.png)
 
 
 ### Phase 2: Attack Surface Reduction Policy
