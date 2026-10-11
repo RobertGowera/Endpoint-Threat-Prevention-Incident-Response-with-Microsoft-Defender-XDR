@@ -71,7 +71,7 @@ Attack Surface Reduction rules help prevent common attack techniques by restrict
 
 Incident investigation allows analysts to review available alerts and supporting evidence, understand potentially malicious activity, assess the scope of an incident, and determine appropriate response actions.
 
-**Evidence:** `screenshots/incident-investigation.png`
+**Evidence:** ![screenshot](./screenshots/defender-xdr-incident/Multi-Stage%20Incident.png)
 
 ### Phase 4: Live Response and Device Containment
 
