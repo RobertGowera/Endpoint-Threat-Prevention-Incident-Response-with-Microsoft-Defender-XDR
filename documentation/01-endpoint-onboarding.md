@@ -2,51 +2,84 @@
 
 ## 1. Objective
 
-The goal of this exercise was to onboard an endpoint into the Microsoft Defender security environment and verify the outcome of the onboarding task.
+The objective of this exercise was to prepare and onboard a Windows endpoint into Microsoft Defender for Endpoint and verify that the device became visible in the Defender security environment.
 
-Endpoint onboarding is an important part of security operations because it enables supported endpoint security capabilities and allows security analysts to investigate device activity through the Defender platform.
+The exercise covered device group creation, configuration of device group settings, retrieval and execution of the onboarding script and verification of the endpoint in the device inventory.
 
 ## 2. Tools and Technologies
 
 - Microsoft Defender XDR
 - Microsoft Defender for Endpoint
-- Windows endpoint
+- Windows 10/11 endpoint environment
+- Device groups
+- Endpoint onboarding script
 - Microsoft Defender Applied Skills lab environment
 
-## 3. Procedure
+## 3. Implementation Procedure
 
-1. Performed the endpoint onboarding task in the Microsoft Defender lab environment.
-2. Ran the onboarding test to see if the onboarding was successfull
-3. Reviewed the resulting onboarding status and available devices in the assets tab.
+### Step 1: Create a Device Group
 
-The exact onboarding method, configuration steps and verification details will be documented from the available screenshots.
+A device group for Windows 10 and Windows 11 devices was created in the Microsoft Defender environment.
 
-## 4. Evidence and Verification
+Device groups help security teams organise endpoints and manage applicable access and security operations settings. Their behaviour depends on the configured group settings and the Defender environment.
 
-The screenshot below documents the successful endpoint onboarding task.
+**Evidence:** Screenshot showing the creation of the Windows 10/11 device group.
 
-![Successfully Onboarded Endpoint](../screenshots/endpoint-onboarding/Successfully%20Onboarded%20Endpoint.png)
+- ![Creating the Windows 10 and Windows 11 device group](/screenshots/endpoint-onboarding/Device%20Group%20Settings.png)
+- ![Device Group Created](/screenshots/endpoint-onboarding/Device%20Group%20Created.png)
 
-**Observation:** The screenshot was captured as evidence of the successful onboarding task in the Applied Skills lab.
 
-Further verification details will be added where supported by the available evidence.
 
-## 5. Security Significance
+### Step 2: Download the Onboarding Script
 
-Endpoint onboarding establishes the foundation for endpoint security monitoring. Depending on the device configuration, licensing and enabled capabilities, Microsoft Defender for Endpoint can provide security telemetry that supports threat detection, investigation and response.
+The endpoint onboarding script was downloaded from the Defender environment for use on the target Windows device.
 
-Without appropriate endpoint visibility, security analysts may have limited evidence with which to investigate suspicious processes, network activity or other endpoint events.
+The onboarding script provides a way to configure the endpoint for onboarding into Microsoft Defender for Endpoint. The exact actions performed depend on the script and onboarding package supplied by the platform.
 
-## 6. Key Learning Outcomes
+**Evidence:** Screenshot showing the onboarding script download.
 
-This exercise provided practical exposure to endpoint onboarding within the Microsoft Defender security ecosystem.
+- ![Downloading the endpoint onboarding script](/screenshots/endpoint-onboarding/Onboarding%20Script.png)
 
-It demonstrated the importance of establishing endpoint visibility before relying on endpoint security monitoring and investigation capabilities.
+### Step 3: Execute the Onboarding Script
 
-## 7. Limitations
+The downloaded onboarding script was executed on the target Windows endpoint as part of the onboarding procedure.
 
-This exercise was performed in a Microsoft Defender Applied Skills lab environment. The documented outcome applies to the lab task and does not establish that a production endpoint was deployed or monitored.
+This step applied the onboarding configuration required for the device to connect to the Defender for Endpoint environment.
 
-## 8. Conclusion
+**Evidence:** Screenshot showing execution of the onboarding script.
 
-The endpoint onboarding task was completed successfully in the lab environment. This established the starting point for the subsequent endpoint protection, incident investigation and response exercises documented in this project.
+![Running the endpoint onboarding script](/screenshots/endpoint-onboarding/Successfully%20Onboarded%20Endpoint.png)
+
+### Step 4: Verify Endpoint Visibility
+
+Following the onboarding procedure, the endpoint was located in the Assets or device inventory section of the Defender portal.
+
+The device's appearance in the inventory shows evidence that it was visible within the Defender environment.
+
+**Evidence:** Screenshot showing the endpoint in the Assets tab.
+
+![Successfully onboarded endpoint visible in the Defender inventory](/screenshots/endpoint-onboarding/Endpoint%20visible%20in%20XDR.png)
+
+## 4. Security Significance
+
+Endpoint onboarding is an important part of endpoint detection and response. It enables supported security capabilities and provides visibility into endpoint activity for investigation and response.
+
+The device group supports endpoint organisation and administration, while the onboarding script establishes the endpoint's onboarding configuration.
+
+Once onboarded, an endpoint can provide telemetry that helps security analysts investigate suspicious processes, examine device activity and respond to potential threats, subject to the device's health, configuration, licensing and enabled capabilities.
+
+## 5. Key Learning Outcomes
+
+This exercise provided practical experience with:
+
+- Creating and configuring endpoint device groups.
+- Retrieving an onboarding script from the Defender environment.
+- Executing the onboarding script on a Windows endpoint.
+- Verifying endpoint visibility through the Defender device inventory.
+- Understanding the role of endpoint onboarding in security monitoring and incident response.
+
+## 6. Conclusion
+
+The onboarding exercise covered the preparation, deployment and verification stages for a Windows endpoint in the Microsoft Defender environment.
+
+This established the foundation for the following endpoint protection, incident investigation and response activities documented in this project.
