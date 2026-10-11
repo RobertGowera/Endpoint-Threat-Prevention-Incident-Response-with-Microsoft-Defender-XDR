@@ -57,7 +57,7 @@ Endpoint onboarding enables security teams to collect endpoint telemetry and inv
 
 Attack Surface Reduction rules help prevent common attack techniques by restricting potentially risky application behaviours. This control is intended to reduce the opportunity for malicious scripts to launch downloaded executable files.
 
-**Evidence:** ![screenshot](./screenshots/endpoint-security-policy/New%20Endpoint%20Security%20Policy%20Settings.png)
+**Evidence:** ![ASR settings](./screenshots/endpoint-security-policy/New%20Endpoint%20Security%20Policy%20Settings.png)
 
 ### Phase 3: Microsoft Defender XDR Incident Investigation
 
@@ -71,7 +71,7 @@ Attack Surface Reduction rules help prevent common attack techniques by restrict
 
 Incident investigation allows analysts to review available alerts and supporting evidence, understand potentially malicious activity, assess the scope of an incident, and determine appropriate response actions.
 
-**Evidence:** ![screenshot](./screenshots/defender-xdr-incident/Multi-Stage%20Incident.png)
+**Evidence:** ![Defender XDR Incident](./screenshots/defender-xdr-incident/Multi-Stage%20Incident.png)
 
 ### Phase 4: Live Response and Device Containment
 
@@ -87,7 +87,7 @@ Incident investigation allows analysts to review available alerts and supporting
 Live Response provides remote investigation capabilities for supported endpoints. An investigation package can provide diagnostic and forensic artefacts for further examination, while device isolation helps contain a potential threat by restricting network communication, subject to the platform's isolation behaviour and permitted connections.
 
 **Evidence:**
-- `screenshots/live-response.png`
+- ![Live Response Network Connections](./screenshots/live-response/Live%20Response%20Network%20Connections.png)
 - `screenshots/investigation-package.png`
 - `screenshots/device-isolation.png`
 
