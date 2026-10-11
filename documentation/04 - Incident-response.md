@@ -43,7 +43,7 @@ Enable the Live Response Settings required to investigate the affected endpoint 
 
 ### Evidence
 
-![Enable Live Response](/screenshots/incident-response/Enable%20Live%20Response.png)
+![Enable Live Response](/screenshots/live-response/Enable%20Live%20Response.png)
 
 ### Security Significance
 
@@ -51,7 +51,7 @@ Live Response provides security analysts with remote investigation capabilities 
 
 Access should be restricted to authorised personnel and managed according to organisational permissions and security procedures.
 
-Enabling the capability is a prerequisite for using it; it does not, by itself, demonstrate that a session was successfully established or that an investigation command was executed.
+Enabling the capability is a prerequisite for using it.
 
 ## 5. Initiate Live Response
 
@@ -67,15 +67,13 @@ Start a Live Response session with the affected endpoint to perform further inve
 
 ### Evidence
 
-![Initiate Live Response](../screenshots/incident-response/Initiate%20Live%20Response.png)
+![Initiate Live Response](/screenshots/live-response/Initiate%20Live%20Response.png)
 
 ### Security Significance
 
 Live Response can provide analysts with additional visibility into endpoint state and support targeted investigation activities.
 
-A remote session can be useful when an analyst needs to examine evidence that is not immediately apparent from an alert or device timeline. However, the commands executed and the results returned must still be assessed in context.
-
-The screenshot documents the initiation of the session. Any claim that a particular command succeeded should be supported by its corresponding output or status.
+A remote session can be useful when an analyst needs to examine evidence that is not immediately apparent from an alert or device timeline.
 
 ## 6. Investigate Current Network Connections
 
@@ -92,7 +90,7 @@ Inspect the endpoint's current network connections to gather additional context 
 
 ### Evidence
 
-![Live Response Network Connections](../screenshots/incident-response/Live%20Response%20Network%20Connections.png)
+![Live Response Network Connections](/screenshots/live-response/Live%20Response%20Network%20Connections.png)
 
 ### Security Significance
 
@@ -105,10 +103,6 @@ When investigating a potentially suspicious process, useful context can include:
 - The process associated with the connection, where that information is available.
 - The connection's timing relative to the incident.
 - Whether the destination is expected for the endpoint and its installed applications.
-
-Network connection information is a point-in-time observation. A connection may have ended before the investigation, and an observed connection does not independently prove that data was exfiltrated or that the destination was malicious.
-
-In this project, network investigation complements the earlier analysis of the PowerShell-to-Notepad process relationship and the destination IP address.
 
 ## 7. Collect an Investigation Package
 
@@ -125,9 +119,9 @@ Collect an investigation package from the affected endpoint to support further a
 
 ### Evidence
 
-![Collect Investigation Package](../screenshots/incident-response/Collect%20Investigation%20Package.png)
+![Collect Investigation Package](/screenshots/live-response/Collect%20Investigation%20Package.png)
 
-![Investigation Package](../screenshots/incident-response/Investigation%20Package.png)
+![Investigation Package](/screenshots/live-response/Investigation%20Package.png)
 
 ### Security Significance
 
