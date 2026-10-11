@@ -88,8 +88,8 @@ Live Response provides remote investigation capabilities for supported endpoints
 
 **Evidence:**
 - ![Live Response Network Connections](./screenshots/live-response/Live%20Response%20Network%20Connections.png)
-- `screenshots/investigation-package.png`
-- `screenshots/device-isolation.png`
+- ![Investigation Package](./screenshots/live-response/Collect%20Investigation%20Package.png)
+- ![Device Isolated](./screenshots/live-response/Device%20Isolated.png)
 
 ## 4. Security Operations Workflow
 
