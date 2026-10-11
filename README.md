@@ -1,4 +1,3 @@
-# Endpoint-Threat-Prevention-Incident-Response-with-Microsoft-Defender-XDR
 # Endpoint Threat Prevention & Incident Response with Microsoft Defender XDR
 
 ## 1. Project Overview
@@ -74,8 +73,6 @@ Incident investigation allows analysts to review available alerts and supporting
 
 **Evidence:** `screenshots/incident-investigation.png`
 
-*The specific alerts, indicators, investigation findings, and incident outcome will be documented after the supporting screenshots have been reviewed.*
-
 ### Phase 4: Live Response and Device Containment
 
 **Objective:** Perform endpoint response actions and collect evidence to support further investigation.
@@ -114,52 +111,26 @@ The activities in this project demonstrate the following security operations wor
 - Device isolation and incident containment
 - Security documentation and technical reporting
 
-## 6. Repository Structure
-
-```text
-defender-xdr-incident-response-lab/
-├── README.md
-├── screenshots/
-│   ├── endpoint-onboarding.png
-│   ├── asr-policy.png
-│   ├── incident-investigation.png
-│   ├── live-response.png
-│   ├── investigation-package.png
-│   └── device-isolation.png
-└── documentation/
-    ├── 01-endpoint-onboarding.md
-    ├── 02-attack-surface-reduction.md
-    ├── 03-incident-investigation.md
-    ├── 04-incident-response.md
-    └── lessons-learned.md
-```
-
-*The repository structure is a proposed layout. Files and screenshots will be added as the documentation is completed.*
-
-## 7. Key Learning Outcomes
+## 6. Key Learning Outcomes
 
 This lab provided practical exposure to endpoint security controls and incident response capabilities within the Microsoft Defender ecosystem.
 
-It reinforced the relationship between preventive security controls, endpoint visibility, incident investigation, evidence collection, and containment. It also provided an opportunity to document security operations activities in a format suitable for a technical portfolio.
+It reinforced the relationship between preventive security controls, endpoint visibility, incident investigation, evidence collection, and containment. It also provided an opportunity to document security operations activities in a format suitable for my technical portfolio.
 
-Further analysis of the incident evidence will be used to document the observed activity, investigation conclusions, and any additional response recommendations.
-
-## 8. Lab Scope and Limitations
+## 7. Lab Scope and Limitations
 
 - All activities documented in this project were performed as part of a Microsoft Defender Applied Skills lab.
 - The project does not represent production security operations experience.
 - Findings and conclusions will be limited to the evidence available from the lab.
-- Screenshots will be reviewed and sanitised before publication to avoid exposing sensitive information.
 
-## 9. Acknowledgement
+## 8. Acknowledgement
 
 This project is based on practical exercises completed through Microsoft Defender Applied Skills. Microsoft documentation and other relevant technical references may be added as supporting sources during the documentation process.
 
 ---
 
-**Author:** [Your Name]
+**Author:** Robert Gowera
 
 **Certification:** Microsoft Certified: Security Operations Analyst Associate (SC-200)
 
-**Portfolio:** [GitHub Profile URL]
 
