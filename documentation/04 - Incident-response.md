@@ -148,19 +148,17 @@ Apply device isolation as a containment measure during the incident response exe
 
 ### Evidence
 
-![Device Isolation](../screenshots/incident-response/Device%20Isolation.png)
+![Device Isolation](/screenshots/incident-response/Device%20Isolation.png)
 
-![Device Isolated](../screenshots/incident-response/Device%20Isolated.png)
+![Device Isolated](/screenshots/incident-response/Device%20Isolated.png)
 
 ### Security Significance
 
-Device isolation is a containment measure intended to limit an endpoint's ability to communicate with other devices or services while an investigation is underway.
+Device isolation is a containment measure used to limit an endpoint's ability to communicate with other devices or services while an investigation is underway.
 
 It can reduce the risk of a potentially compromised device communicating with malicious infrastructure or affecting other systems. The precise communication permitted during isolation depends on the platform's isolation behaviour and supported exceptions.
 
-Isolation should be proportionate to the suspected threat and the operational importance of the device. In a production environment, analysts should follow the organisation's incident response procedures and consider business impact before isolating critical systems.
-
-Where the platform confirms that the device is isolated, that status provides evidence that the containment action was applied. The status does not, by itself, establish that the original activity was malicious or that all risk has been eliminated.
+Isolation should be proportionate to the suspected threat and the operational importance of the device.
 
 ## 9. Response Workflow and Evidence Correlation
 
@@ -189,7 +187,7 @@ The practical exercise provided experience with the following Microsoft Defender
 - Connecting endpoint investigation findings with incident response actions.
 - Recognising the importance of validating action outcomes.
 
-The exercise reinforced the importance of gathering evidence and taking proportionate containment actions while maintaining a clear distinction between suspected activity and confirmed malicious behaviour.
+The exercise reinforced the importance of gathering evidence and taking containment actions while maintaining a clear distinction between suspected activity and confirmed malicious behaviour.
 
 ## 11. Lessons Learned
 
@@ -199,7 +197,7 @@ Identifying suspicious activity is only one part of incident handling. Analysts 
 
 ### Evidence collection supports further analysis
 
-An investigation package can provide useful artefacts beyond the information visible in an alert. Its contents should be reviewed in context, and the package should be protected because it may contain sensitive information.
+An investigation package can provide useful artefacts beyond the information visible in an alert.
 
 ### Isolation is a containment action
 
@@ -220,8 +218,6 @@ This phase was completed in a controlled learning environment using Microsoft De
 The results reflect the endpoint state and telemetry available during the exercise. Network connection information represents the information returned at the time of inspection and may not show every historical connection.
 
 The investigation package's usefulness depends on the artefacts collected and their relevance to the incident. Device isolation is a containment measure, not proof of remediation or complete eradication of a threat.
-
-Any claim of successful session initiation, package collection or device isolation should be supported by the relevant status or output visible in the corresponding evidence.
 
 ## 13. Conclusion
 
