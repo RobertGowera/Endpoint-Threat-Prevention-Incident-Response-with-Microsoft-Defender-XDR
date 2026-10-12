@@ -64,8 +64,15 @@ Attack Surface Reduction rules help prevent common attack techniques by restrict
 **Objective:** Investigate and manage a security incident using the Defender XDR portal.
 
 **Activities performed:**
-- Accessed and managed a Defender XDR incident.
-- Worked through the incident management workflow provided by the lab.
+
+- Investigated a Microsoft Defender XDR incident using the incident details, endpoint timeline and process tree.
+- Examined a suspected PowerShell-to-Notepad process relationship and correlated it with available endpoint telemetry.
+- Used Advanced Hunting and KQL to identify matching process-creation activity associated with the lab incident.
+- Created a custom detection rule and configured investigation package collection and device isolation as response actions.
+- Investigated a destination IP address using VirusTotal and assessed conflicting reputation signals.
+- Configured an IP indicator with a blocking action as part of the lab exercise.
+
+**Key finding:** The KQL query matched activity associated with the investigated incident. VirusTotal showed no malicious engine detections at the time of the subsequent check, while the community score was −261. The IP was therefore treated as requiring further investigation rather than being conclusively classified as malicious.
 
 **Security relevance:**
 
