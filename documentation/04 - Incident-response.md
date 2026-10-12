@@ -148,9 +148,9 @@ Apply device isolation as a containment measure during the incident response exe
 
 ### Evidence
 
-![Device Isolation](/screenshots/incident-response/Device%20Isolation.png)
+![Device Isolation](/screenshots/live-response/Device%20Isolation.png)
 
-![Device Isolated](/screenshots/incident-response/Device%20Isolated.png)
+![Device Isolated](/screenshots/live-response/Device%20Isolated.png)
 
 ### Security Significance
 
