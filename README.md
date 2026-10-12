@@ -123,10 +123,6 @@ It reinforced the relationship between preventive security controls, endpoint vi
 - The project does not represent production security operations experience.
 - Findings and conclusions will be limited to the evidence available from the lab.
 
-## 8. Acknowledgement
-
-This project is based on practical exercises completed through Microsoft Defender Applied Skills. Microsoft documentation and other relevant technical references may be added as supporting sources during the documentation process.
-
 ---
 
 **Author:** Robert Gowera
