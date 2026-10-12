@@ -91,6 +91,13 @@ Live Response provides remote investigation capabilities for supported endpoints
 - ![Investigation Package](./screenshots/live-response/Collect%20Investigation%20Package.png)
 - ![Device Isolated](./screenshots/live-response/Device%20Isolated.png)
 
+## Detailed Phase Documentation
+
+- [Phase 1: Endpoint Onboarding](documentation/01-endpoint-onboarding.md)
+- [Phase 2: Attack Surface Reduction](documentation/02%20-%20Attack%20Surface%20Reduction%20Policy%20Configuration.md)
+- [Phase 3: Incident Investigation](documentation/03%20-%20Incident%20Investigation%20and%20Custom%20Detection.md)
+- [Phase 4: Incident Response](documentation/04%20-%20Incident-response.md)
+
 ## 4. Security Operations Workflow
 
 The activities in this project demonstrate the following security operations workflow:
